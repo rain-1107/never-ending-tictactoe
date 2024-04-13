@@ -85,11 +85,7 @@ class Game {
   constructor() {
     this.backgroundColour = "#555555";
     this.nextTurn = "cross";
-    this.crossPositions = [
-      [0, 0],
-      [1, 0],
-      [2, 0]
-    ];
+    this.crossPositions = [];
     this.noughtPositions = [];
   }
   update(clickEvent = 0) {
@@ -149,6 +145,15 @@ class Game {
         y: (canvas.height / 2 - gridSize / 2) + this.noughtPositions[i][1] * gridSize / 3 + 1 / 40 * gridSize
       }, gridSize / 7, colour, 1 / 40 * gridSize)
     }
+
+    // Display whos turn it is 
+    if (this.nextTurn == "cross") {
+      drawText("Cross's turn", { x: canvas.width / 2 - 90, y: canvas.height / 2 - gridSize / 2 - 75 }, 30, cGrid);
+    } else {
+      drawText("Nought's turn", { x: canvas.width / 2 - 100, y: canvas.height / 2 - gridSize / 2 - 75 }, 30, cGrid);
+    }
+
+    // Check win
     let result = this.checkWin();
     if (result != 0) {
       this.showWinScreen(result)
