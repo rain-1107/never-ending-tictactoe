@@ -30,14 +30,14 @@ function isArrayInArray(parent, searchItem) {
 }
 
 function drawText(text, position, size, colour) {
-  screen.font = "30px Poppins"
+  screen.font = size + "px Poppins"
   screen.fillStyle = colour;
   screen.fillText(text, position.x, position.y);
 }
 
 function drawRect(position, size, colour) {
   screen.fillStyle = colour;
-  screen.fillRect(position.x, position.y, size.x, size.y);
+  screen.fillRect(Math.round(position.x), Math.round(position.y), Math.round(size.x), Math.round(size.y));
 }
 
 function drawGrid(position, size, colour, thickness = 20) {
@@ -148,9 +148,9 @@ class Game {
 
     // Display whos turn it is 
     if (this.nextTurn == "cross") {
-      drawText("Cross's turn", { x: canvas.width / 2 - 90, y: canvas.height / 2 - gridSize / 2 - 75 }, 30, cGrid);
+      drawText("Cross's turn", { x: canvas.width / 2 - 90, y: canvas.height / 2 - gridSize / 2 - 35 }, 30, cGrid);
     } else {
-      drawText("Nought's turn", { x: canvas.width / 2 - 100, y: canvas.height / 2 - gridSize / 2 - 75 }, 30, cGrid);
+      drawText("Nought's turn", { x: canvas.width / 2 - 100, y: canvas.height / 2 - gridSize / 2 - 35 }, 30, cGrid);
     }
 
     // Check win
